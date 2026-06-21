@@ -1,19 +1,10 @@
-/**
- * ============================================================================
- * IIMS v1.0 DESIGN LANGUAGE (EXECUTIVE ENTERPRISE STYLE)
- * Colors: #0A3663 (Al Azhar Blue), #D4AF37 (Gold), #F5F7FA (Soft Grey Grid)
- * Typography: Inter & Poppins
- * ============================================================================
- */
-
 :root {
   --alazhar-blue: #0A3663;
   --alazhar-gold: #D4AF37;
   --bg-soft-gray: #F5F7FA;
   --text-dark-enterprise: #1E293B;
-  --sidebar-width: 280px;
+  --sidebar-width: 260px;
   --topbar-height: 70px;
-  --glass-shadow: 0 8px 32px 0 rgba(10, 54, 99, 0.05);
 }
 
 body {
@@ -24,428 +15,87 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-}
+h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+.fs-7 { font-size: 0.85rem; }
+.fs-8 { font-size: 0.75rem; }
 
-/* ISLAMIC GEOMETRIC BACKGROUND PATTERN (SUBTLE OPACITY) */
+/* ISLAMIC PATTERN - Sangat Halus (Opacity 0.02) */
 body::before {
   content: "";
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  z-index: -1;
-  opacity: 0.015;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%230A3663' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+  opacity: 0.02; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l3 17 17 3-17 3-3 17-3-17-17-3 17-3z' fill='%230A3663' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
-/* ==================== LOGIN COMPONENT STYLES ==================== */
+/* LOGIN COMPONENT */
 #login-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at center, #1e4f8a 0%, #0A3663 100%);
-  padding: 20px;
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at center, #112B4A 0%, #051A30 100%); padding: 20px;
 }
-
 .login-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  border-radius: 24px;
-  width: 100%;
-  max-width: 450px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  border: 1px solid rgba(255,255,255,0.2);
-  animation: fadeZoomIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  background: #ffffff; padding: 40px; border-radius: 16px; width: 100%; max-width: 420px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);
+  animation: fadeZoomIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-
 @keyframes fadeZoomIn {
-  from { opacity: 0; transform: scale(0.95) translateY(10px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
+  from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); }
 }
+.login-title { color: var(--alazhar-blue); font-size: 1.25rem; font-weight: 700; letter-spacing: 0.5px; margin: 0; }
+.login-subtitle { color: #475569; font-size: 1rem; font-weight: 500; margin-bottom: 5px; }
+.login-badge { background-color: var(--alazhar-blue); color: white; display: inline-block; padding: 2px 12px; border-radius: 50px; font-weight: 600; font-size: 0.8rem; margin-bottom: 8px; }
+.login-school { color: var(--alazhar-gold); font-weight: 600; font-size: 0.8rem; border-bottom: 1px solid #E2E8F0; padding-bottom: 15px; }
+.form-control-enterprise { background-color: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 8px; padding: 10px 15px; font-size: 0.9rem; transition: all 0.2s; }
+.form-control-enterprise:focus { border-color: var(--alazhar-blue); box-shadow: 0 0 0 3px rgba(10,54,99,0.1); }
+.btn-primary-alazhar { background-color: var(--alazhar-blue); border: none; color: white; font-weight: 600; padding: 10px; border-radius: 8px; font-family: 'Poppins', sans-serif; transition: 0.2s; }
+.btn-primary-alazhar:hover { background-color: #08294a; color: white; }
+.login-footer { margin-top: 30px; font-size: 0.75rem; line-height: 1.5; color: #64748B; }
 
-.login-title {
-  color: var(--alazhar-blue);
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-  margin: 0;
-}
+/* SIDEBAR */
+.sidebar-wrapper { width: var(--sidebar-width); height: 100vh; position: fixed; top: 0; left: 0; background-color: #ffffff; border-right: 1px solid #E2E8F0; z-index: 1040; display: flex; flex-direction: column; transition: transform 0.3s ease; }
+.sidebar-header { padding: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #E2E8F0; background: var(--alazhar-blue); color: white; }
+.sidebar-brand-text .main-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px; }
+.sidebar-brand-text .sub-title { font-size: 0.7rem; color: var(--alazhar-gold); font-weight: 500; }
+.sidebar-menu { padding: 16px 12px; overflow-y: auto; flex-grow: 1; background: #ffffff; }
+.sidebar-menu .nav-link { display: flex; align-items: center; gap: 12px; padding: 10px 14px; color: #475569; border-radius: 8px; margin-bottom: 4px; font-weight: 500; font-size: 0.85rem; transition: 0.2s; text-decoration: none; }
+.sidebar-menu .nav-link:hover { background-color: #F1F5F9; color: var(--alazhar-blue); }
+.sidebar-menu .nav-link.active { background-color: var(--bg-soft-gray); color: var(--alazhar-blue); font-weight: 600; border-left: 3px solid var(--alazhar-gold); border-radius: 0 8px 8px 0; }
+.sidebar-divider { height: 1px; background-color: #E2E8F0; margin: 12px 0; }
 
-.login-subtitle {
-  color: var(--text-dark-enterprise);
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
+.content-wrapper { margin-left: var(--sidebar-width); min-height: 100vh; display: flex; flex-direction: column; transition: margin-left 0.3s; }
 
-.login-badge {
-  background-color: var(--alazhar-blue);
-  color: white;
-  display: inline-block;
-  padding: 2px 14px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 8px;
-}
+/* TOPBAR */
+.topbar-container { height: var(--topbar-height); background-color: rgba(255,255,255,0.95); backdrop-filter: blur(5px); border-bottom: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; position: sticky; top: 0; z-index: 1030; }
+.role-badge { background-color: var(--bg-soft-gray); color: var(--alazhar-blue); font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; border: 1px solid #E2E8F0; }
+.academic-year { font-size: 0.75rem; color: #64748B; font-weight: 500; }
+.btn-icon-topbar { width: 36px; height: 36px; border-radius: 8px; background: white; border: 1px solid #E2E8F0; color: #475569; display: flex; align-items: center; justify-content: center; }
 
-.login-school {
-  color: var(--alazhar-gold);
-  font-weight: 600;
-  font-size: 0.85rem;
-  border-bottom: 2px solid #E2E8F0;
-  padding-bottom: 15px;
-}
+/* ANNOUNCEMENT */
+.announcement-bar-sticky { background-color: var(--alazhar-blue); color: white; padding: 6px 24px; border-bottom: 2px solid var(--alazhar-gold); }
+.announcement-wrapper { display: flex; align-items: center; gap: 12px; }
+.announcement-badge { background-color: var(--alazhar-gold); color: var(--alazhar-blue); font-weight: 700; font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; }
+.announcement-ticker-container { overflow: hidden; position: relative; width: 100%; height: 18px; }
+.announcement-ticker-text { position: absolute; white-space: nowrap; font-size: 0.8rem; animation: ticker 25s linear infinite; }
+@keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-.btn-primary-alazhar {
-  background-color: var(--alazhar-blue);
-  border: 1px solid var(--alazhar-blue);
-  color: white;
-  font-weight: 600;
-  padding: 12px;
-  border-radius: 10px;
-  transition: all 0.2s ease-in-out;
-}
+/* ENTERPRISE CARDS */
+.main-content-panel { padding: 24px; }
+.iims-card-widget { background: white; border-radius: 12px; padding: 18px 20px; border: 1px solid #E2E8F0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: space-between; transition: 0.2s; }
+.iims-card-widget:hover { border-color: #CBD5E1; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.widget-icon-box { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+.widget-metric-number { font-size: 1.5rem; font-weight: 700; color: var(--text-dark-enterprise); line-height: 1; margin-bottom: 4px; }
+.widget-metric-label { font-size: 0.8rem; color: #64748B; font-weight: 500; }
 
-.btn-primary-alazhar:hover {
-  background-color: #12467d;
-  border-color: #12467d;
-  color: white;
-  transform: translateY(-1px);
-}
+.card-enterprise { background: white; border-radius: 12px; padding: 20px; border: 1px solid #E2E8F0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.card-title-enterprise { font-size: 0.9rem; font-weight: 700; color: var(--text-dark-enterprise); margin-bottom: 16px; border-bottom: 1px solid #F1F5F9; padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 
-.login-footer {
-  margin-top: 30px;
-  font-size: 0.78rem;
-  line-height: 1.4;
-}
+/* TABLES */
+.table-enterprise th { background-color: #F8FAFC; color: #475569; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #E2E8F0; padding: 12px 16px; }
+.table-enterprise td { padding: 12px 16px; font-size: 0.85rem; vertical-align: middle; border-bottom: 1px solid #F1F5F9; color: var(--text-dark-enterprise); }
 
-/* ==================== CORE LAYOUT COMPONENT ==================== */
-.sidebar-wrapper {
-  width: var(--sidebar-width);
-  height: 100vh;
-  position: fixed;
-  top: 0; left: 0;
-  background-color: var(--alazhar-blue);
-  color: white;
-  z-index: 1040;
-  transition: transform 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar-header {
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.sidebar-brand-text .main-title {
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.sidebar-brand-text .sub-title {
-  font-size: 0.72rem;
-  color: var(--alazhar-gold);
-  font-weight: 500;
-}
-
-.sidebar-menu {
-  padding: 20px 12px;
-  overflow-y: auto;
-  flex-grow: 1;
-}
-
-.sidebar-menu .nav-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  color: rgba(255,255,255,0.75);
-  border-radius: 10px;
-  margin-bottom: 4px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
-
-.sidebar-menu .nav-link:hover {
-  background-color: rgba(255,255,255,0.05);
-  color: white;
-}
-
-.sidebar-menu .nav-link.active {
-  background-color: var(--alazhar-gold);
-  color: var(--alazhar-blue) !important;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
-}
-
-.content-wrapper {
-  margin-left: var(--sidebar-width);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  transition: margin-left 0.3s ease-in-out;
-}
-
-/* ==================== TOPBAR HEADER COMPONENT ==================== */
-.topbar-container {
-  height: var(--topbar-height);
-  background-color: white;
-  border-bottom: 1px solid #E2E8F0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
-  sticky: top;
-  z-index: 1030;
-}
-
-.topbar-welcome-msg {
-  font-size: 0.8rem;
-  color: #64748B;
-}
-
-.topbar-page-title {
-  font-size: 1.25rem;
-  color: var(--alazhar-blue);
-}
-
-.role-badge {
-  background-color: #E2E8F0;
-  color: var(--alazhar-blue);
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 2px 10px;
-  border-radius: 6px;
-  display: inline-block;
-}
-
-.academic-year {
-  font-size: 0.75rem;
-  color: #64748B;
-  margin-top: 2px;
-}
-
-.btn-icon-topbar {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background-color: var(--bg-soft-gray);
-  border: none;
-  color: #475569;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-
-.btn-icon-topbar:hover {
-  background-color: #E2E8F0;
-  color: var(--alazhar-blue);
-}
-
-.btn-toggle-sidebar {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--alazhar-blue);
-}
-
-/* ==================== ANNOUNCEMENT COMPONENT ==================== */
-.announcement-bar-sticky {
-  position: sticky;
-  top: 0;
-  background-color: var(--alazhar-blue);
-  color: white;
-  z-index: 1020;
-  padding: 8px 30px;
-  border-bottom: 2px solid var(--alazhar-gold);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.announcement-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.announcement-badge {
-  background-color: var(--alazhar-gold);
-  color: var(--alazhar-blue);
-  font-weight: 700;
-  font-size: 0.78rem;
-  padding: 3px 10px;
-  border-radius: 4px;
-  white-space: nowrap;
-}
-
-.announcement-ticker-container {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  height: 20px;
-}
-
-.announcement-ticker-text {
-  position: absolute;
-  white-space: nowrap;
-  font-size: 0.88rem;
-  font-weight: 400;
-  animation: tickerAnimation 25s linear infinite;
-}
-
-@keyframes tickerAnimation {
-  0% { transform: translate3d(100%, 0, 0); }
-  100% { transform: translate3d(-100%, 0, 0); }
-}
-
-/* ==================== PANELS AND COMPONENT CARDS ==================== */
-.main-content-panel {
-  padding: 30px;
-  flex-grow: 1;
-}
-
-.iims-card-widget {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  border: 1px solid #E2E8F0;
-  box-shadow: var(--glass-shadow);
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.iims-card-widget:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(10, 54, 99, 0.08);
-}
-
-.widget-icon-box {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-}
-
-.widget-metric-number {
-  font-size: 1.85rem;
-  font-weight: 700;
-  color: var(--alazhar-blue);
-  line-height: 1.2;
-}
-
-.widget-metric-label {
-  font-size: 0.85rem;
-  color: #64748B;
-  font-weight: 500;
-}
-
-/* MUTIARA ISLAMI SPECIAL CARD STYLE */
-.mutiara-islami-card {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  border: 1px solid #E2E8F0;
-  border-left: 5px solid var(--alazhar-gold);
-  box-shadow: var(--glass-shadow);
-}
-
-.mutiara-islami-title {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--alazhar-blue);
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
-}
-
-.mutiara-islami-text {
-  font-style: italic;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.05rem;
-  color: #334155;
-  line-height: 1.6;
-}
-
-/* DATA TABLE FRAMEWORK STANDARD */
-.table-card-wrapper {
-  background: white;
-  border-radius: 16px;
-  border: 1px solid #E2E8F0;
-  box-shadow: var(--glass-shadow);
-  overflow: hidden;
-}
-
-.table-action-header {
-  padding: 20px 24px;
-  border-bottom: 1px solid #E2E8F0;
-  background-color: #FAFAFA;
-}
-
-.iims-table {
-  margin: 0;
-}
-
-.iims-table th {
-  background-color: #F8FAFC;
-  color: #475569;
-  font-weight: 600;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  padding: 14px 24px;
-  border-bottom: 1px solid #E2E8F0;
-}
-
-.iims-table td {
-  padding: 14px 24px;
-  font-size: 0.9rem;
-  vertical-align: middle;
-  border-bottom: 1px solid #F1F5F9;
-}
-
-/* RESPONSIVE DESIGN INTERFACES */
-@media (max-width: 1199.98s) {
-  /* Tablet View */
-}
-
-@media (max-width: 767.98px) {
-  /* Mobile View Port Config */
-  .sidebar-wrapper {
-    transform: translateX(-100%);
-  }
-  .sidebar-wrapper.mobile-show {
-    transform: translateX(0);
-  }
-  .sidebar-backdrop {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.4);
-    z-index: 1035;
-  }
-  .content-wrapper {
-    margin-left: 0;
-  }
-  .btn-toggle-sidebar {
-    display: block;
-  }
-  .topbar-container {
-    padding: 0 15px;
-  }
-  .main-content-panel {
-    padding: 15px;
-  }
+@media (max-width: 768px) {
+  .sidebar-wrapper { transform: translateX(-100%); }
+  .sidebar-wrapper.mobile-show { transform: translateX(0); }
+  .content-wrapper { margin-left: 0; }
+  .btn-toggle-sidebar { display: block; background: none; border: none; color: var(--text-dark-enterprise); }
+  .sidebar-backdrop { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15,23,42,0.4); z-index: 1035; }
 }
